@@ -1,0 +1,38 @@
+# Dune build artifacts
+_build/
+*.install
+
+# OCaml compiled object files
+*.cm[oix]
+*.cmxa
+*.cmxs
+*.cmt
+*.cmti
+*.o
+*.a
+*.s
+
+# Top-level / Interactive REPL history
+.ocamlinit
+.utop-history
+
+# OPAM local switches & configuration
+_opam/
+*.opam.locked
+
+# Oasis build system artifacts
+setup.data
+setup.log
+setup.bin
+configure
+build.ml
+
+# Merlin / IDE support
+.merlin
+
+# Editor & OS files
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store
