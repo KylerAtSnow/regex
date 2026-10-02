@@ -19,10 +19,10 @@ let matches r s = matchesStartLeavingValidRemainder r s (fun rest -> rest = "")
 
 (* Part 3 *)
 (* only the words that pattern matches *)
-let keep_matches pattern words = List.filter (fun w -> matches pattern w)
+let keep_matches pattern words = List.filter (fun w -> matches pattern w) words
 
 (* each word paired with whether pattern matches it *)
-let label_matches pattern words = []
+let label_matches pattern words = List.map (fun w -> (w, matches pattern w)) words
 
 (* the total length of the words pattern matches, using List.fold_left *)
-let total_match_length pattern words = 0
+let total_match_length pattern words = List.fold_left (fun acc w -> acc + (String.length w)) 0 (keep_matches pattern words)
