@@ -10,7 +10,7 @@ let rec matchesStartLeavingValidRemainder (startsWith: re) (input: string) (vali
   match (startsWith, input) with
   | (Empty, _) -> validRemainder input
   | (Char c, _) when n > 0 && String.get input 0 = c -> validRemainder (String.sub input 1 (n - 1))
-  | (Seq (first, second), _) -> matchesStartLeavingValidRemainder first input (fun rest -> true)
+  | (Seq (first, second), _) -> matchesStartLeavingValidRemainder first input (fun rest -> matchesStartLeavingValidRemainder second (String.sub input 1 (n - 1)) validRemainder)
   | (Alt (a, b), _) -> false
   | (Star p, x) -> validRemainder input || matchesStartLeavingValidRemainder p input (fun rest -> String.length rest < n)
   | _ -> false
