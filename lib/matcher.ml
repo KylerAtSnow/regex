@@ -12,7 +12,7 @@ let rec matchesStartLeavingValidRemainder (startsWith: re) (input: string) (vali
   | (Char c, _) when n > 0 && String.get input 0 = c -> validRemainder (String.sub input 1 (n - 1))
   | (Seq (first, second), _) -> matchesStartLeavingValidRemainder first input (fun rest -> matchesStartLeavingValidRemainder second (String.sub input 1 (n - 1)) validRemainder)
   | (Alt (a, b), _) -> matchesStartLeavingValidRemainder a input validRemainder || matchesStartLeavingValidRemainder b input validRemainder
-  | (Star p, x) -> validRemainder input || matchesStartLeavingValidRemainder p input (fun rest -> String.length rest < n && matchesStartLeavingValidRemainder startsWith rest validRemainder)
+  | (Star p, _) -> validRemainder input || matchesStartLeavingValidRemainder p input (fun rest -> String.length rest < n && matchesStartLeavingValidRemainder startsWith rest validRemainder)
   | _ -> false
 
 let matches r s = matchesStartLeavingValidRemainder r s (fun rest -> rest = "")
