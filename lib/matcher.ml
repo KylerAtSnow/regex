@@ -16,3 +16,13 @@ let rec matchesStartLeavingValidRemainder (startsWith: re) (input: string) (vali
   | _ -> false
 
 let matches r s = matchesStartLeavingValidRemainder r s (fun rest -> rest = "")
+
+(* Part 3 *)
+(* only the words that pattern matches *)
+let keep_matches pattern words = List.filter (fun w -> matches pattern w)
+
+(* each word paired with whether pattern matches it *)
+let label_matches pattern words = []
+
+(* the total length of the words pattern matches, using List.fold_left *)
+let total_match_length pattern words = 0
